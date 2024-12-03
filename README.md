@@ -1,5 +1,5 @@
 # Ex.05 Design a Website for Server Side Processing
-## Date:
+## Date:29/11/2024
 
 ## AIM:
  To design a website to calculate the power of a lamp filament in an incandescent bulb in the server side. 
@@ -146,19 +146,18 @@ def Power(request):
     context['Power'] = "0" 
     context['I'] = "0" 
     context['R'] = "0" 
-    if request.method == 'POST':
+    if request.method == 'POST': 
         print("POST method is used")
-        I = request.POST.get('I','0')
-        R = request.POST.get('R','0')
-        print(I, R)
+        I = request.POST.get('Intensity','0')
+        R = request.POST.get('Resistance','0')
         print('request=',request) 
         print('Intensity=',I) 
         print('Resistance=',R) 
-        area = int(I) * int(I) * int(R) 
-        context['Power'] = area 
+        Power = (int(I) * int(I)) * int(R)
+        context['Power'] = Power
         context['I'] = I
         context['R'] = R
-        print('Power=',area) 
+        print('Power=',Power) 
     return render(request,'mathsapp/maths.html',context)
 
 urls.py
